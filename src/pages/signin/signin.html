@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+	<ion-content padding-top>
+
+		<img src="assets/imgs/HealthySpirits-Title-Shadow-500.png">
+
+
+    <form (ngSubmit)="doSignin()">
+
+      <ion-label stacked>USERNAME</ion-label>
+      <ion-input type="text" [(ngModel)]="username" name="username"></ion-input>
+
+      <ion-label stacked>PASSWORD</ion-label>
+      <ion-input type="password" [(ngModel)]="password" name="password"></ion-input>
+
+      <button ion-button type="submit" color="dark" large round class="signin">LOGIN</button>
+
+
+    </form>
+
+
+		
+		<button  ion-button color="dark" large round icon-right (click)="login()">Login with
+			<ion-icon name="logo-facebook"></ion-icon>
+		</button>
+
+
+	</ion-content>
+
+  <ion-footer transparent no-border>
+    <div class = "signup">
+      <b> Don't have an Account? <a [navPush]="registerPage">Sign Up.</a></b>
+    </div>
+  </ion-footer>
+</body>
+</html>
+
+

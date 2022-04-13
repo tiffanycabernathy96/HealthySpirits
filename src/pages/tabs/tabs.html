@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+	<ion-tabs color="secondary">
+	  <ion-tab [root]="tab1Root" tabTitle="Home" tabIcon="home"></ion-tab>
+	  <ion-tab [root]="tab2Root" tabTitle="Recipes" tabIcon="search"></ion-tab>
+	  <ion-tab *ngIf= "NotGuestMode" [root]="tab3Root" tabTitle="New Recipe" tabIcon="add"></ion-tab>
+	  <ion-tab *ngIf= "NotGuestMode" [root]="tab4Root" tabTitle="Profile" tabIcon="person"></ion-tab>
+	</ion-tabs>
+</body>
+</html>

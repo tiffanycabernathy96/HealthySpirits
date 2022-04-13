@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<ion-header>
+  <ion-navbar color="secondary">
+    <ion-title>Edit Ingredient</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <img src="assets/imgs/Boozey-shadow-sideways-800.png" alt="Boozey" class="logo">
+
+  <form>
+
+  <ion-list>
+
+    <ion-item>
+      <ion-label color="primary" stacked>Name</ion-label>
+      <ion-input type="text" [(ngModel)]="name" name="name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="primary" stacked>Brand</ion-label>
+      <ion-input type="text" [(ngModel)]="brand" name="brand"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="primary" stacked>Serving Size Amount (oz)</ion-label>
+      <ion-input type="number" [(ngModel)]="servingSizeAmt" name="servingSizeAmt"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="primary" stacked>Calories</ion-label>
+      <ion-input type="number" [(ngModel)]="calories" name="calories"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="primary" stacked>Calories From Fat</ion-label>
+      <ion-input type="number" [(ngModel)]="caloriesFromFat" name="caloriesFromFat"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="primary" stacked>Total Carbs (g)</ion-label>
+      <ion-input type="number" [(ngModel)]="totalCarbs" name="totalCarbs"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="primary" stacked>Cholesterol (mg)</ion-label>
+      <ion-input type="number" [(ngModel)]="cholesterol" name="cholesterol"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="primary" stacked>Saturated Fat (g)</ion-label>
+      <ion-input type="number" [(ngModel)]="satFat" name="satFat"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="primary" stacked>Trans Fat (g)</ion-label>
+      <ion-input type="number" [(ngModel)]="transFat" name="transFat"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="primary" stacked>Total Fat (g)</ion-label>
+      <ion-input type="number" [(ngModel)]="totalFat" name="totalFat"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="primary" stacked>Sodium (mg)</ion-label>
+      <ion-input type="number" [(ngModel)]="sodium" name="sodium"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="primary" stacked>Sugars (g)</ion-label>
+      <ion-input type="number" [(ngModel)]="sugars" name="sugars"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="primary" stacked>Protien (g)</ion-label>
+      <ion-input type="number" [(ngModel)]="protein" name="protein"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="primary" stacked>Dietary Fiber (g)</ion-label>
+      <ion-input type="number" [(ngModel)]="dietaryFiber" name="dietaryFiber"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="primary" stacked>Calcium (%)</ion-label>
+      <ion-input type="number" [(ngModel)]="calcium" name="calcium"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="primary" stacked>Iron (%)</ion-label>
+      <ion-input type="number" [(ngModel)]="iron" name="iron"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="primary" stacked>Vitamin A (%)</ion-label>
+      <ion-input type="number" [(ngModel)]="vitA" name="vitA"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="primary" stacked>Vitamin C (%)</ion-label>
+      <ion-input type="number" [(ngModel)]="vitC" name="vitC"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="primary" stacked>Alcohol by Volume (%)</ion-label>
+      <ion-input type="number" [(ngModel)]="alcoholPerServing" name="alcoholPerServing"></ion-input>
+    </ion-item>
+
+  </ion-list>
+  </form>
+
+</ion-content>
+
+<ion-footer transparent>
+<ion-toolbar>
+  <button ion-button round class="buttons" [disabled]="name.length == '0' || brand.length == '0' || servingSizeAmt == 0" (click)="saveIngredient()" >Save Ingredient</button>
+</ion-toolbar>
+
+</ion-footer>
+</body>
+</html>

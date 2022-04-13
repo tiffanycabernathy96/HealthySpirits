@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+<ion-header>
+	<ion-navbar color="secondary">
+		<ion-title>Profile</ion-title>
+
+		<ion-buttons end>
+			<button ion-button (click)="edit()" color="white" icon-only><ion-icon name="create"></ion-icon></button>
+		</ion-buttons>
+
+	</ion-navbar>
+</ion-header>
+
+
+<ion-content padding class= "content">
+
+  <img src="assets/imgs/Boozey-shadow-sideways-800.png" alt="Boozey" class="logo">
+
+	<ion-item>
+		<ion-label>
+			<ion-icon name="contact"></ion-icon>
+			{{this.username}}
+		</ion-label>
+	</ion-item>
+
+	<ion-item>
+		<ion-label>
+			<ion-icon name="mail"></ion-icon>
+			{{this.email}}
+		</ion-label>
+	</ion-item>
+
+	<br>
+
+    <button ion-button *ngIf="!fbLoginStatus" round (click)="connectToFacebook()" class="facebook">Connect To Facebook</button>
+	<button ion-button round class="logout" (click)="logout()">Log Out</button>
+
+</ion-content>
+
+</body>
+
+</html>

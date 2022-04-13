@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<ion-header>
+
+
+
+  <ion-navbar>
+    <ion-title>{{spirits[0].type}}</ion-title>
+    <ion-buttons end>
+      <button ion-button id="closeBtn" (click)="close()"><ion-icon name="close"></ion-icon></button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-searchbar (ionInput)="getItems($event)" animated="true" ></ion-searchbar>
+  <ion-list>
+    <button ion-item *ngFor="let spirit of searchList" (click)="presentPopover(spirit, $event)">
+      {{spirit.name}}
+    </button>
+  </ion-list>
+</ion-content>
+
+</body>
+</html>

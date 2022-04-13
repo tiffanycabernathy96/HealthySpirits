@@ -1,0 +1,10 @@
+<ion-content>
+  <ion-item>
+    <ion-input type="number" placeholder="Add Amount in Ounces" [(ngModel)]="amount"></ion-input>
+  </ion-item>
+
+  <ion-buttons end>
+    <button ion-button id="addBtn" (click)="addToList()"><ion-icon name="checkmark"></ion-icon></button>
+    <button ion-button id="closeBtn" (click)="close()"><ion-icon name="close"></ion-icon></button>
+  </ion-buttons>
+</ion-content>

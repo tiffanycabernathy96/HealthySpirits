@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+	<body>
+		<ion-header color="secondary">
+			<ion-navbar color="secondary">
+				<ion-title>Recipes</ion-title>
+				<ion-buttons end>
+					<button ion-button class="top-bar-icons" color="white" (click)="SearchToggle()" icon-only><ion-icon name="search" large></ion-icon></button>
+					<!--<button ion-button color="white" (click)="FilterPopover($event)" icon-only><ion-icon name="funnel" large></ion-icon></button>-->
+				</ion-buttons>
+			</ion-navbar>
+			<ion-segment [(ngModel)]="segment">
+				<ion-segment-button *ngIf= "NotGuestMode" value="0">
+					My Recipes
+				</ion-segment-button>
+				<ion-segment-button value="1">
+					Top Drinks
+				</ion-segment-button>
+				<ion-segment-button value="2">
+					All Recipes
+				</ion-segment-button>
+			</ion-segment>
+		</ion-header>
+
+		<ion-content padding class="content">
+
+			<ion-fab bottom right>
+				<button ion-fab *ngIf= "NotGuestMode" (click)="loadAddDrink()"><ion-icon name="add"></ion-icon></button>
+			</ion-fab>
+
+			<div [ngSwitch]="segment">
+
+				<ion-searchbar *ngIf="SearchClicked" (ionInput)="getItems($event)" animated="true" ></ion-searchbar>
+
+				<ion-list *ngSwitchCase="0" margin-bottom="20px" no-lines>
+					<ion-item-sliding id="color-slider-recipes"  *ngFor="let item of items">
+						<ion-item (click)="viewItem(item,true)">
+							<ion-icon  name="pint" [color]="'white'" item-start ></ion-icon>
+							<b>{{item.name}}</b>
+						</ion-item>
+						<ion-item-options  side="right">
+							<button ion-button color = "blue" (click)="loadEditDrink(item)">
+								<ion-icon name="create"></ion-icon>
+								Edit
+							</button>
+							<button ion-button  color="danger"  (click)="deleteDrink(item)">
+								<ion-icon name="trash"></ion-icon>
+								Trash
+							</button>
+						</ion-item-options>
+					</ion-item-sliding>
+				</ion-list>
+
+				<ion-list *ngSwitchCase="1" no-lines="">
+					<ion-item class="transparent" class="top-drink-item" *ngFor="let item of topDrinksSearch" (click)="viewItem(item,false)" >
+						<ion-row nowrap="" height="100px">
+							<ion-col col-4>
+								<img class="center-cropped" src="{{item.imgURL}}">
+							</ion-col>
+							<ion-col col-8 align-self-center class="title-card">
+								<b> {{item.name}} </b>
+							</ion-col>
+						</ion-row>
+					</ion-item>
+				</ion-list>
+
+				<ion-list *ngSwitchCase="2" no-lines="">
+					<ion-item class="transparent" class="top-drink-item" *ngFor="let item of searchedRecipes" (click)="viewItem(item,false)" >
+						<ion-row nowrap="" height="100px">
+							<ion-col col-4>
+								<img class="center-cropped" src="{{item.imgURL}}">
+							</ion-col>
+							<ion-col col-8 align-self-center class="title-card">
+								<b> {{item.name}} </b>
+							</ion-col>
+						</ion-row>
+					</ion-item>
+				</ion-list>
+
+			</div>
+		</ion-content>
+	</body>
+</html>

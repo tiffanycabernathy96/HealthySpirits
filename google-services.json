@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "656136670810",
+    "firebase_url": "https://healthyspirits-e83f6.firebaseio.com",
+    "project_id": "healthyspirits-e83f6",
+    "storage_bucket": "healthyspirits-e83f6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:656136670810:android:c0f20fb2f3e9077b",
+        "android_client_info": {
+          "package_name": "com.Capstone.HealthySpirits"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "656136670810-j6p101dj88emtk9t7hgi2vtgfjoe268q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.Capstone.HealthySpirits",
+            "certificate_hash": "d068c69dcd88a650be11e42cde04e4de7f4d3446"
+          }
+        },
+        {
+          "client_id": "656136670810-hsk9rs6776fgbiqgcrr57g18rs5ps84q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSKVFAzV7IwvIHMdKxxuklGD0H0lxH0CI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "656136670810-hsk9rs6776fgbiqgcrr57g18rs5ps84q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

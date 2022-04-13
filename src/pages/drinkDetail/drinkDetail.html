@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+	<body>
+		<ion-header>
+			<ion-navbar color="secondary">
+
+				<ion-title><h2>{{name}}</h2></ion-title>
+
+				<ion-buttons end>
+
+        		<button ion-button class="top-bar-icons" color="white" *ngIf= "isUserDrink" (click)="sendForEdit()" icon-only><ion-icon name="create"></ion-icon></button>
+					<button ion-button class="top-bar-icons" color="white" (click)="copyToClipboard()" icon-only><ion-icon name="clipboard" large></ion-icon></button>
+				</ion-buttons>
+
+			</ion-navbar>
+
+		</ion-header>
+
+		<ion-content padding >
+			<img src="{{img}}"/>
+            <h4 class= "rate" >
+                <button ion-button [disabled]= "!NotGuestMode" color="secondary" (click)="like();" id="btn1" icon-left>
+                <ion-icon name="thumbs-up"></ion-icon>&nbsp;&nbsp;{{likes}}</button>&nbsp;
+                <button ion-button [disabled]= "!NotGuestMode" color="secondary" (click)="dislike();" id="btn2" icon-left>
+                <ion-icon name="thumbs-down"></ion-icon>&nbsp;&nbsp;{{dislikes}}</button>
+            </h4>
+			<h3>Ingredients</h3>
+			<ion-list>
+				<ion-item *ngFor="let item of drinkIngredientDetails">
+					<ion-row>
+						<ion-col col-9>
+							{{item.name}}
+						</ion-col>
+						<ion-col col-3>
+							{{item.amount}} oz
+						</ion-col>
+					</ion-row>
+				</ion-item>
+			</ion-list>
+			<br>
+			<h3>Drink Size in Ounces</h3>
+			<ion-item>
+				<ion-range (ionChange)="calculateNutrition()" min="1" max="128" step="1" [(ngModel)]="size">
+					<ion-icon small range-left name="beer"></ion-icon>
+					<ion-icon range-right name="beer"></ion-icon>
+				</ion-range>
+			</ion-item>
+
+			<br>
+
+			<h3>Nutrition Facts</h3>
+			<ion-list>
+				<ion-item>
+					<ion-label>Serving Size</ion-label>
+					<ion-label class="right" end>{{size}} Ounces</ion-label>
+				</ion-item>
+				<br>
+				<hr>
+				<br>
+				<ion-item no-lines>
+					<ion-label>Amount per serving</ion-label>
+				</ion-item>
+
+				<ion-item>
+					<ion-label>Calories</ion-label>
+					<ion-label class="right">{{calories}}</ion-label>
+				</ion-item>
+				<ion-item>
+					<ion-label>Calories From Fat</ion-label>
+					<ion-label class="right">{{caloriesFromFat}}</ion-label>
+				</ion-item>
+				<ion-item>
+					<ion-label>Alcohol</ion-label>
+					<ion-label class="right">{{alcoholPerServing}} g</ion-label>
+				</ion-item>
+
+				<br>
+				<hr>
+				<br>
+
+				<ion-item>
+					<ion-label>Total Fat</ion-label>
+					<ion-label class="right">{{totalFat}}g</ion-label>
+				</ion-item>
+
+				<ion-item>
+					<ion-label>Saturated Fat</ion-label>
+					<ion-label class="right">{{satFat}}g</ion-label>
+				</ion-item>
+
+				<ion-item>
+					<ion-label>Trans Fat</ion-label>
+					<ion-label class="right">{{transFat}}g</ion-label>
+				</ion-item>
+
+				<ion-item>
+					<ion-label>Cholesterol</ion-label>
+					<ion-label class="right">{{cholesterol}}mg</ion-label>
+				</ion-item>
+
+				<ion-item>
+					<ion-label>Sodium</ion-label>
+					<ion-label class="right">{{sodium}}mg</ion-label>
+				</ion-item>
+
+				<ion-item>
+					<ion-label>Total Carbohydrate</ion-label>
+					<ion-label class="right">{{totalCarb}}g</ion-label>
+				</ion-item>
+
+				<ion-item>
+					<ion-label>Dietary Fiber</ion-label>
+					<ion-label class="right">{{dietaryFiber}}g</ion-label>
+				</ion-item>
+
+				<ion-item>
+					<ion-label>Sugars</ion-label>
+					<ion-label class="right">{{sugars}}g</ion-label>
+				</ion-item>
+
+				<ion-item>
+					<ion-label>Protein</ion-label>
+					<ion-label class="right">{{protein}}g</ion-label>
+				</ion-item>
+
+				<br>
+				<hr>
+				<br>
+
+				<ion-item>
+					<ion-label>Vitamin A</ion-label>
+					<ion-label class="right">{{vitA}}%</ion-label>
+				</ion-item>
+
+				<ion-item>
+					<ion-label>Vitamin C</ion-label>
+					<ion-label class="right">{{vitC}}%</ion-label>
+				</ion-item>
+
+				<ion-item>
+					<ion-label>Calcium</ion-label>
+					<ion-label class="right">{{calcium}}%</ion-label>
+				</ion-item>
+
+				<ion-item>
+					<ion-label>Iron</ion-label>
+					<ion-label class="right">{{iron}}%</ion-label>
+				</ion-item>
+
+			</ion-list>
+		</ion-content>
+	</body>
+</html>

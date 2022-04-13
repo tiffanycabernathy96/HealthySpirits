@@ -1,0 +1,191 @@
+
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<ion-header>
+  <ion-navbar color="secondary">
+    <ion-title *ngIf="EditMode == false">Create New Recipe</ion-title>
+    <ion-title *ngIf="EditMode == true"> Edit Recipe</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="presentColorHelper($event)" > <ion-icon name="key" [color]="'white'" large item-end></ion-icon></button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+
+<ion-content padding class= "content">
+
+
+
+
+
+
+	<h3>Drink Name:</h3>
+	<ion-item no-lines>
+		<ion-input no-lines type="text" [(ngModel)]="drinkName"></ion-input>
+	</ion-item>
+
+	<ion-list *ngIf="currentIngredients.length != 0">
+		<h4 class="noIng">Drink Ingredients:</h4>
+		<ion-item *ngFor="let item of currentBoth">
+			<ion-row nowrap>
+				<ion-col col-6 align-self-center>
+					<ion-row nowrap>
+					<!--<div *ngIf="EditMode==true"> {{item.amount}} oz. </div>-->
+            {{item.Name}}
+
+					</ion-row>
+				</ion-col>
+        <ion-col col-2 align-self-center>
+          <ion-row align-self-end>
+            {{item.Amount}} oz.
+          </ion-row>
+        </ion-col>
+				<ion-col col-4>
+					<ion-buttons end>
+					<button ion-button icon-only small  clear (click)="removeIngredient(item)">
+						<ion-icon name="trash"></ion-icon>
+					</button>
+					</ion-buttons>
+				</ion-col>
+			</ion-row>
+		</ion-item>
+	</ion-list>
+	<div *ngIf="currentIngredients.length == 0" >
+    <h4 class="noIng">Drink Ingredients:</h4>
+    <button ion-item>
+      <ion-icon [color]="'primary'" name="alert" item-start></ion-icon>
+      No Ingredients Added!
+    </button>
+  </div>
+	<br>
+  <h4> Add Ingredients:</h4>
+	<button ion-item (click)="toggleSpirits()">Spirits<ion-icon item-end [name]="showSpirits ? 'arrow-dropdown' : 'arrow-dropright'"></ion-icon></button>
+	<ion-list id="spirits">
+		<button ion-item (click)="openAddSpirit(absinthes)">
+		  <ion-icon [color]="'blue'" name="wine" item-start></ion-icon>
+		  Absinthe
+		</button>
+
+		<button ion-item (click)="openAddSpirit(baijius)">
+		  <ion-icon [color]="'blue'" name="wine" item-start></ion-icon>
+		  Baijiu
+		</button>
+
+		<button ion-item (click)="openAddSpirit(brandys)">
+		  <ion-icon [color]="'blue'" name="wine" item-start></ion-icon>
+		  Brandy
+		</button>
+
+		<button ion-item (click)="openAddSpirit(cachacas)">
+		  <ion-icon [color]="'blue'" name="wine" item-start></ion-icon>
+		  Cachaca
+		</button>
+
+		<button ion-item (click)="openAddSpirit(gins)">
+		  <ion-icon [color]="'blue'" name="wine" item-start></ion-icon>
+		  Gin
+		</button>
+
+		<button ion-item (click)="openAddSpirit(liqueurs)">
+		  <ion-icon [color]="'blue'" name="wine" item-start></ion-icon>
+		  Liqueur
+		</button>
+
+		<button ion-item (click)="openAddSpirit(mezcals)">
+		  <ion-icon [color]="'blue'" name="wine" item-start></ion-icon>
+		  Mezcal
+		</button>
+
+		<button ion-item (click)="openAddSpirit(rums)">
+		  <ion-icon [color]="'blue'" name="wine" item-start></ion-icon>
+		  Rum
+		</button>
+
+		<button ion-item (click)="openAddSpirit(scotches)">
+		  <ion-icon [color]="'blue'" name="wine" item-start></ion-icon>
+		  Scotch
+		</button>
+
+		<button ion-item (click)="openAddSpirit(sojus)">
+		  <ion-icon [color]="'blue'" name="wine" item-start></ion-icon>
+		  Soju
+		</button>
+
+		<button ion-item (click)="openAddSpirit(tequilas)">
+		  <ion-icon [color]="'blue'" name="wine" item-start></ion-icon>
+		  Tequila
+		</button>
+
+		<button ion-item (click)="openAddSpirit(vermouths)">
+		  <ion-icon [color]="'blue'" name="wine" item-start></ion-icon>
+		  Vermouth
+		</button>
+
+		<button ion-item (click)="openAddSpirit(vodkas)">
+		  <ion-icon [color]="'blue'" name="wine" item-start></ion-icon>
+		  Vodka
+		</button>
+
+		<button ion-item (click)="openAddSpirit(whiskeys)">
+		  <ion-icon [color]="'blue'" name="wine" item-start></ion-icon>
+		  Whiskey
+		</button>
+	</ion-list>
+	<br>
+	<button ion-item (click)="toggleMixers()">Mixers<ion-icon item-end [name]="showMixers ? 'arrow-dropdown' : 'arrow-dropright'"></ion-icon></button>
+	<ion-list id="mixers">
+		<ion-item>
+			<ion-searchbar (ionInput)="getItems($event)" [debounce]="500" placeholder="Search..."></ion-searchbar>
+		</ion-item>
+		<button ion-item *ngFor="let mixer of searchMixers" (click)="presentPopover(mixer, $event)" icon="wine">
+			<ion-icon [color]="'teal'" name="pint" item-start></ion-icon>  {{mixer.name}}
+		</button>
+	</ion-list>
+	<br>
+	<button ion-item (click)="toggleUI()">My Ingredients<ion-icon item-end [name]="showUsersIng ? 'arrow-dropdown' : 'arrow-dropright'"></ion-icon></button>
+
+	<ion-list id="userIngredients">
+		<ion-item-sliding *ngFor="let item of userCreatedIngredients">
+			<ion-item (click)="presentPopover(item, $event)">
+				{{item.name}}
+			</ion-item>
+			<ion-item-options  side="right">
+				<button ion-button color = "blue" (click)="editIngredient(item)">
+					<ion-icon class="ingredIcon" name="create"></ion-icon>
+				</button>
+				<button ion-button  color="danger"  (click)="deleteIngredient(item)">
+					<ion-icon class="ingredIcon" name="trash"></ion-icon>
+				</button>
+			</ion-item-options>
+		</ion-item-sliding>
+		<button ion-item (click)="addNewIngredient()">
+			<ion-icon [color]="'blue'" name="add" item-start></ion-icon>
+			Add New Ingredient
+		</button>
+	</ion-list>
+
+	<br>
+
+
+
+
+</ion-content>
+
+<ion-footer transparent>
+<ion-toolbar>
+  <button id="save-button" ion-button round full (click)="saveDrink()">
+    Save Drink
+  </button>
+</ion-toolbar>
+
+</ion-footer>
+
+
+
+

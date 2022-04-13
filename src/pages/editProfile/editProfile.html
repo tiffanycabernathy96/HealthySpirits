@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<ion-header>
+  <ion-navbar color="secondary">
+    <ion-title>Edit Profile</ion-title>
+    <ion-buttons end>
+		<button ion-button id="closeBtn" (click)="goBack()"><ion-icon name="close"></ion-icon></button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <img src="assets/imgs/Boozey-shadow-sideways-800.png" alt="Boozey" class="logo">
+
+	<ion-item>
+		<ion-label color="primary" stacked>Username</ion-label>
+		<ion-input type="text" [(ngModel)]="username" name="username"></ion-input>
+	</ion-item>
+
+	<ion-item>
+		<ion-label color="primary" stacked>Email</ion-label>
+		<ion-input type="email" [(ngModel)]="email" name="email"></ion-input>
+	</ion-item>
+
+	<br>
+
+	<button ion-button round class="buttons" (click)="changePassword()">Change Password</button>
+
+	<br>
+
+	<button ion-button round class="buttons" (click)="saveChanges()"
+		[disabled]="email.length == '0' || username.length == '0'">
+		Save Changes
+	</button>
+
+	<br>
+
+
+
+	<!--There is an x in the top right no need for this button
+	<button ion-button round (click)="goBack()">Go Back</button>-->
+
+</ion-content>
+
+</body>
+</html>

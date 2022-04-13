@@ -1,0 +1,42 @@
+page-editRecipe {
+  
+
+  ion-icon {
+    font-size: 30px;
+  }
+  #save-button{
+    text-transform: none !important;
+    width: 80%;
+    margin: auto !important;
+
+  }
+  .noIng{
+	margin-top: 10px !important;
+  }
+  .ingredIcon{
+	margin-bottom: 0px;
+	padding: 0px !important;
+  }
+
+  ion-list{
+  border-bottom: 0px !important;
+  }
+
+  ion-footer{
+    background: transparent !important;
+    text-align: center !important;
+    align-content: center !important;
+    margin: auto !important;
+  }
+  ion-toolbar{
+    background: transparent !important;
+    text-align: center !important;
+    align-content: center !important;
+    margin: auto !important;
+  }
+	ion-col, h2{
+		white-space:normal;
+	}
+
+
+}
