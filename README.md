@@ -1,6 +1,6 @@
 # HealthySpirits
 
-##NOTE: I brought this repository into my Github so I could reference it on my resume. The original repository is private. 
+## NOTE: I brought this repository into my Github so I could reference it on my resume. The original repository is private. 
 
 ## Requirements to Build:
 
